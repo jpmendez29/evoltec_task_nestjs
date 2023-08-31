@@ -5,9 +5,10 @@ import {
   Get,
   Param,
   ParseIntPipe,
+  Patch,
   Post,
 } from '@nestjs/common';
-import { createTaskDto } from './dto/createTask.dto';
+import { createTaskDto, updateTaskDto } from './dto/createTask.dto';
 import { TaskService } from './task.service';
 import { task } from './task.entity';
 
@@ -28,6 +29,14 @@ export class TaskController {
   @Post()
   createTask(@Body() newTaks: createTaskDto): Promise<task> {
     return this.taskService.createTask(newTaks);
+  }
+
+  @Patch(':id')
+  updateTask(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() data: updateTaskDto,
+  ) {
+    return this.taskService.updateTask(id, data);
   }
 
   @Delete(':id')

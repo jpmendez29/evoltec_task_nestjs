@@ -11,7 +11,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
       name: 'default',
       host: 'localhost',
       port: 3306,
-      database: 'testNest',
+      database: 'testnest',
       username: 'root',
       password: 'Admin1234',
       logger: 'advanced-console',
